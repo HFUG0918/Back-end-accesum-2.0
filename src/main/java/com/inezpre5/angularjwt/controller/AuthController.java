@@ -66,7 +66,7 @@ public class AuthController {
                     roles.add(rolAdmin);
                     break;
                 default:
-                    Rol rolUser = rolService.getByRolNombre(RolNombre.ROLE_USER).get();
+                    Rol rolUser = rolService.getByRolNombre(RolNombre.ROLE_PERSONAL).get();
                     roles.add(rolUser);
             }
         }

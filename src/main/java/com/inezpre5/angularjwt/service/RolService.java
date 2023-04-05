@@ -1,11 +1,13 @@
 package com.inezpre5.angularjwt.service;
 
-import com.inezpre5.angularjwt.entity.Rol;
-import com.inezpre5.angularjwt.enums.RolNombre;
-import com.inezpre5.angularjwt.repository.RolRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.inezpre5.angularjwt.entity.Rol;
+import com.inezpre5.angularjwt.enums.RolNombre;
+import com.inezpre5.angularjwt.repository.RolRepository;
 
 import java.util.Optional;
 
@@ -18,5 +20,9 @@ public class RolService {
 
     public Optional<Rol> getByRolNombre(RolNombre rolNombre){
         return rolRepository.findByRolNombre(rolNombre);
+    }
+
+    public void save(Rol rol){
+        rolRepository.save(rol);
     }
 }
