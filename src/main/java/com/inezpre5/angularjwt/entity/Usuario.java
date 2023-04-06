@@ -16,7 +16,7 @@ public class Usuario {
 
     @NotNull
     @Column(unique = true)
-    private String nombreUsuario;
+    private String documento;
 
     @NotNull
     @Column(unique = true)
@@ -26,6 +26,9 @@ public class Usuario {
     private String password;
 
     @NotNull
+    private String detalle;
+
+    @NotNull
     @ManyToMany
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
@@ -33,11 +36,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(@NotNull String nombre, @NotNull String nombreUsuario, @NotNull String email, @NotNull String password) {
+    public Usuario(@NotNull String nombre, @NotNull @NotNull String documento, @NotNull String email, @NotNull String password,
+            @NotNull String detalle) {
         this.nombre = nombre;
-        this.nombreUsuario = nombreUsuario;
+        this.documento = documento;
         this.email = email;
         this.password = password;
+        this.detalle = detalle;
     }
 
     public Long getId() {
@@ -56,12 +61,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public @NotNull String getDocumento() {
+        return documento;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setDocumento(@NotNull String documento) {
+        this.documento = documento;
     }
 
     public String getEmail() {
@@ -80,6 +85,14 @@ public class Usuario {
         this.password = password;
     }
 
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
+
     public Set<Rol> getRoles() {
         return roles;
     }
@@ -87,4 +100,6 @@ public class Usuario {
     public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
+
+   
 }

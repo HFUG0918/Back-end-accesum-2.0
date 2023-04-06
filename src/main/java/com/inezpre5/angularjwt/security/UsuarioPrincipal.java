@@ -1,5 +1,6 @@
 package com.inezpre5.angularjwt.security;
 
+import com.inezpre5.angularjwt.entity.Rol;
 import com.inezpre5.angularjwt.entity.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,15 +14,15 @@ public class UsuarioPrincipal implements UserDetails {
 
     private Long id;
     private String nombre;
-    private String nombreUsuario;
+    private String documento;
     private String email;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UsuarioPrincipal(Long id, String nombre, String nombreUsuario, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UsuarioPrincipal(Long id, String nombre, String documento, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.nombre = nombre;
-        this.nombreUsuario = nombreUsuario;
+        this.documento = documento;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
@@ -30,7 +31,7 @@ public class UsuarioPrincipal implements UserDetails {
     public static UsuarioPrincipal build(Usuario usuario){
         List<GrantedAuthority> authorities =
                 usuario.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol.getRolNombre().name())).collect(Collectors.toList());
-        return new UsuarioPrincipal(usuario.getId(), usuario.getNombre(), usuario.getNombreUsuario(), usuario.getEmail(), usuario.getPassword(), authorities);
+        return new UsuarioPrincipal(usuario.getId(), usuario.getNombre(), usuario.getDocumento(), usuario.getEmail(), usuario.getPassword(), authorities);
     }
 
     public Long getId() {
@@ -57,7 +58,7 @@ public class UsuarioPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return nombreUsuario;
+        return documento;
     }
 
     @Override

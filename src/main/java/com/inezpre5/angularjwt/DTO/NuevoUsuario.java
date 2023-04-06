@@ -2,11 +2,20 @@ package com.inezpre5.angularjwt.DTO;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import java.util.Set;
+
+import java.util.HashSet;
+
+// import java.util.Set
 
 public class NuevoUsuario {
     @NotBlank
     private String nombre;
+
+     @NotBlank
+     private String detalles; 
+
+    @NotBlank
+    private String documento;
 
     @NotBlank
     @Email
@@ -18,7 +27,7 @@ public class NuevoUsuario {
     @NotBlank
     private String password;
 
-    private Set<String> roles;
+    private HashSet<String> roles;
 
     public String getNombre() {
         return nombre;
@@ -26,6 +35,22 @@ public class NuevoUsuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(String detalles) {
+        this.detalles = detalles;
+    }
+
+    public @NotNull @NotBlank String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
     public String getEmail() {
@@ -36,14 +61,6 @@ public class NuevoUsuario {
         this.email = email;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -52,11 +69,21 @@ public class NuevoUsuario {
         this.password = password;
     }
 
-    public Set<String> getRoles() {
+    public HashSet<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<String> roles) {
+    public void setRoles(HashSet<String> roles) {
         this.roles = roles;
     }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    
 }

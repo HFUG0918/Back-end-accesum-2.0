@@ -16,11 +16,11 @@ public class UsuarioService {
     UsuarioRepository usuarioRepository;
 
     public Optional<Usuario> getByNombreUsuario(String nu){
-        return usuarioRepository.findByNombreUsuario(nu);
+        return usuarioRepository.findByDocumento(nu);
     }
 
     public boolean existePorNombre(String nu){
-        return usuarioRepository.existsByNombreUsuario(nu);
+        return usuarioRepository.existsByDocumento(nu);
     }
 
     public  boolean existePorEmail(String email){
